@@ -150,26 +150,32 @@ class ResponseGenerator:
 
         fallback_url = chunks[0].source_url if chunks else "https://groww.in/mutual-funds/hdfc-large-cap-fund-direct-growth"
 
-        # Step 5: LLM Generation with Groq Rate Limit Protection
+        # Step 5: LLM Generation with Groq Rate Limit Protection & Resilient Model Chain
         raw_llm_output = ""
         if self.groq_client and self.rate_limiter.acquire(estimated_tokens=600):
-            try:
-                system_prompt = self._build_system_prompt()
-                user_prompt = self._build_user_prompt(sanitized_query, chunks)
-                
-                chat_completion = self.groq_client.chat.completions.create(
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt},
-                    ],
-                    model=settings.GROQ_MODEL_NAME,
-                    temperature=0.1,  # Low temperature for deterministic grounding
-                    max_tokens=250,
-                )
-                raw_llm_output = chat_completion.choices[0].message.content.strip()
-                logger.info("Successfully generated response via Groq LLM API.")
-            except Exception as e:
-                logger.error(f"Groq API generation error: {e}. Switching to grounded fallback.")
+            candidate_models = [settings.GROQ_MODEL_NAME, "qwen/qwen3.6-27b", "openai/gpt-oss-20b", "groq/compound"]
+            system_prompt = self._build_system_prompt()
+            user_prompt = self._build_user_prompt(sanitized_query, chunks)
+
+            for model_id in candidate_models:
+                try:
+                    chat_completion = self.groq_client.chat.completions.create(
+                        messages=[
+                            {"role": "system", "content": system_prompt},
+                            {"role": "user", "content": user_prompt},
+                        ],
+                        model=model_id,
+                        temperature=0.1,
+                        max_tokens=250,
+                    )
+                    raw_llm_output = chat_completion.choices[0].message.content.strip()
+                    logger.info(f"Successfully generated response via Groq LLM API (Model: {model_id}).")
+                    break
+                except Exception as e:
+                    logger.warning(f"Groq Model '{model_id}' failed: {e}. Trying next candidate...")
+
+            if not raw_llm_output:
+                logger.error("All Groq LLM candidate models failed. Switching to grounded fallback.")
                 raw_llm_output = self._generate_fallback_response(chunks)
         else:
             logger.info("Groq API unconfigured or Rate Limit Guardrail intercepted. Generating grounded fallback response.")

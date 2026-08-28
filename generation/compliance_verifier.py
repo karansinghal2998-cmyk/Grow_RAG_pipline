@@ -64,6 +64,9 @@ class ComplianceVerifier:
         """
         Rigorously inspects and formats raw LLM output to strictly satisfy all compliance rules.
         """
+        # 0. Strip internal chain-of-thought tags (<think>...</think>) if present
+        raw_text = re.sub(r"<think>.*?</think>", "", raw_text, flags=re.DOTALL).strip()
+
         # 1. Separate body text from footer if present
         footer_match = re.search(r"Last updated from sources:\s*[\d\-]+", raw_text, re.IGNORECASE)
         footer_text = footer_match.group(0) if footer_match else self.DEFAULT_DATE_FOOTER
