@@ -1,0 +1,245 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2818
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\froman\fcharset0 Times-Bold;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sb480\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Problem Statement\
+Problem Statement: Mutual Fund FAQ Assistant (Facts-Only Q&A)\
+\pard\pardeftab720\sa80\pardirnatural\partightenfactor0
+\cf0 Overview\
+\pard\pardeftab720\sb240\sa240\pardirnatural\partightenfactor0
+\cf0 The objective of this project is to build a 
+\f1\b facts-only FAQ assistant
+\f0\b0  for mutual fund schemes, using 
+\f1\b Groww
+\f0\b0  as the reference product context. The assistant will answer 
+\f1\b objective, verifiable queries
+\f0\b0  related to mutual funds by retrieving information exclusively from 
+\f1\b official public sources
+\f0\b0 , such as AMC (Asset Management Company) websites, AMFI, and SEBI.\
+The system must strictly 
+\f1\b avoid providing investment advice, opinions, or recommendations
+\f0\b0 . Every response must include a 
+\f1\b single, clear source link
+\f0\b0  and adhere to defined constraints around clarity, accuracy, and compliance.\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sa80\pardirnatural\partightenfactor0
+\cf0 Objective\
+\pard\pardeftab720\sb240\sa240\pardirnatural\partightenfactor0
+\cf0 Design and implement a lightweight 
+\f1\b Retrieval-Augmented Generation (RAG)-based assistant
+\f0\b0  that:\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+\cf0 	\'95	Answers 
+\f1\b factual queries
+\f0\b0  about mutual fund schemes\
+\pard\pardeftab720\li720\pardirnatural\partightenfactor0
+\cf0 	\'95	Uses a 
+\f1\b curated corpus of official documents\
+\pard\pardeftab720\li720\sa240\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 	\'95	Provides 
+\f1\b concise, source-backed responses\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+\pard\pardeftab720\sa80\pardirnatural\partightenfactor0
+\cf0 Target Users\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+\cf0 	\'95	Retail investors comparing mutual fund schemes\
+\pard\pardeftab720\li720\sa240\pardirnatural\partightenfactor0
+\cf0 	\'95	Customer support and content teams handling repetitive mutual fund queries\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sa80\pardirnatural\partightenfactor0
+\cf0 Scope of Work\
+\pard\pardeftab720\sb280\pardirnatural\partightenfactor0
+\cf0 1. Corpus Definition\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+\cf0 	\'95	Select 
+\f1\b one Asset Management Company (AMC)\
+\pard\pardeftab720\li720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 	\'95	Choose 
+\f1\b 3\'965 mutual fund schemes
+\f0\b0 , ensuring category diversity (e.g., large-cap, flexi-cap, ELSS)\
+	\'95	Collect 
+\f1\b 15\'9625 official public URLs
+\f0\b0 , including:\
+\pard\pardeftab720\li1440\pardirnatural\partightenfactor0
+\cf0 	\'95	Scheme factsheets\
+	\'95	KIM (Key Information Memorandum)\
+	\'95	SID (Scheme Information Document)\
+	\'95	AMC FAQ/help pages\
+	\'95	AMFI/SEBI guidance pages\
+\pard\pardeftab720\li1440\sa240\pardirnatural\partightenfactor0
+\cf0 	\'95	Statement and tax document download guides\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sb280\pardirnatural\partightenfactor0
+\cf0 2. FAQ Assistant Requirements\
+\pard\pardeftab720\sb240\sa240\pardirnatural\partightenfactor0
+\cf0 The assistant must:\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+\cf0 	\'95	Answer 
+\f1\b facts-only queries
+\f0\b0 , such as:\
+\pard\pardeftab720\li1440\pardirnatural\partightenfactor0
+\cf0 	\'95	Expense ratio of a scheme\
+	\'95	Exit load details\
+	\'95	Minimum SIP amount\
+	\'95	ELSS lock-in period\
+	\'95	Riskometer classification\
+	\'95	Benchmark index\
+	\'95	Process to download statements or capital gains reports\
+\pard\pardeftab720\li720\pardirnatural\partightenfactor0
+\cf0 	\'95	Ensure:\
+\pard\pardeftab720\li1440\pardirnatural\partightenfactor0
+\cf0 	\'95	Each response is 
+\f1\b limited to a maximum of 3 sentences\
+
+\f0\b0 	\'95	Each response includes 
+\f1\b exactly one citation link\
+\pard\pardeftab720\li1440\sa240\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 	\'95	Each response includes a footer:\uc0\u8232  
+\f1\b \'93Last updated from sources: <date>\'94\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+\pard\pardeftab720\sb280\pardirnatural\partightenfactor0
+\cf0 3. Refusal Handling\
+\pard\pardeftab720\sb240\sa240\pardirnatural\partightenfactor0
+\cf0 The assistant must 
+\f1\b refuse non-factual or advisory queries
+\f0\b0 , such as:\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+\cf0 	\'95	\'93Should I invest in this fund?\'94\
+\pard\pardeftab720\li720\sa240\pardirnatural\partightenfactor0
+\cf0 	\'95	\'93Which fund is better?\'94\
+\pard\pardeftab720\sb240\sa240\pardirnatural\partightenfactor0
+\cf0 Refusal responses should:\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+\cf0 	\'95	Be 
+\f1\b polite and clearly worded\
+\pard\pardeftab720\li720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 	\'95	Reinforce the 
+\f1\b facts-only limitation\
+\pard\pardeftab720\li720\sa240\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 	\'95	Provide a 
+\f1\b relevant educational link
+\f0\b0  (e.g., AMFI or SEBI resource)\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sb280\pardirnatural\partightenfactor0
+\cf0 4. User Interface (Minimal)\
+\pard\pardeftab720\sb240\sa240\pardirnatural\partightenfactor0
+\cf0 The solution should include a simple interface with:\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+\cf0 	\'95	A welcome message\
+\pard\pardeftab720\li720\pardirnatural\partightenfactor0
+\cf0 	\'95	Three example questions\
+\pard\pardeftab720\li720\sa240\pardirnatural\partightenfactor0
+\cf0 	\'95	A visible disclaimer:\uc0\u8232  
+\f1\b \'93Facts-only. No investment advice.\'94\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+\pard\pardeftab720\sa80\pardirnatural\partightenfactor0
+\cf0 Constraints\
+\pard\pardeftab720\sb280\pardirnatural\partightenfactor0
+\cf0 Data and Sources\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+\cf0 	\'95	Use 
+\f1\b only official public sources
+\f0\b0  (AMC, AMFI, SEBI)\
+\pard\pardeftab720\li720\sa240\pardirnatural\partightenfactor0
+\cf0 	\'95	Do 
+\f1\b not
+\f0\b0  use third-party blogs or aggregator websites\
+\pard\pardeftab720\sb280\pardirnatural\partightenfactor0
+\cf0 Privacy and Security\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+\cf0 	\'95	Do 
+\f1\b not
+\f0\b0  collect, store, or process:\
+\pard\pardeftab720\li1440\pardirnatural\partightenfactor0
+\cf0 	\'95	PAN or Aadhaar numbers\
+	\'95	Account numbers\
+	\'95	OTPs\
+\pard\pardeftab720\li1440\sa240\pardirnatural\partightenfactor0
+\cf0 	\'95	Email addresses or phone numbers\
+\pard\pardeftab720\sb280\pardirnatural\partightenfactor0
+\cf0 Content Restrictions\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+\cf0 	\'95	No investment advice or recommendations\
+\pard\pardeftab720\li720\pardirnatural\partightenfactor0
+\cf0 	\'95	No performance comparisons or return calculations\
+\pard\pardeftab720\li720\sa240\pardirnatural\partightenfactor0
+\cf0 	\'95	For performance-related queries, provide a 
+\f1\b link to the official factsheet only\
+\pard\pardeftab720\sb280\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 Transparency\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+\cf0 	\'95	Responses must be 
+\f1\b short, factual, and verifiable\
+\pard\pardeftab720\li720\sa240\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 	\'95	Every answer must include a 
+\f1\b source link and last updated date\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+\pard\pardeftab720\sa80\pardirnatural\partightenfactor0
+\cf0 Expected Deliverables\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+
+\f1\b \cf0 	\'95	README Document\
+\pard\pardeftab720\li1440\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 	\'95	Setup instructions\
+	\'95	Selected AMC and schemes\
+	\'95	Architecture overview (RAG approach)\
+	\'95	Known limitations\
+\pard\pardeftab720\li720\pardirnatural\partightenfactor0
+
+\f1\b \cf0 	\'95	Disclaimer Snippet\
+\pard\pardeftab720\li1440\sa240\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 	\'95	\'93Facts-only. No investment advice.\'94\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sa80\pardirnatural\partightenfactor0
+\cf0 Success Criteria\
+\pard\pardeftab720\li720\sb240\pardirnatural\partightenfactor0
+\cf0 	\'95	Accurate retrieval of factual mutual fund information\
+\pard\pardeftab720\li720\pardirnatural\partightenfactor0
+\cf0 	\'95	Strict adherence to 
+\f1\b facts-only responses\
+
+\f0\b0 	\'95	Consistent inclusion of 
+\f1\b valid source citations\
+
+\f0\b0 	\'95	Proper refusal of advisory queries\
+\pard\pardeftab720\li720\sa240\pardirnatural\partightenfactor0
+\cf0 	\'95	Clean, minimal, and user-friendly interface\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sa80\pardirnatural\partightenfactor0
+\cf0 Summary\
+\pard\pardeftab720\sb240\sa240\pardirnatural\partightenfactor0
+\cf0 The goal is to build a 
+\f1\b trustworthy, transparent, and compliant mutual fund FAQ assistant
+\f0\b0  that prioritizes 
+\f1\b accuracy over intelligence
+\f0\b0 . The system should ensure that users receive only 
+\f1\b verified, source-backed financial information
+\f0\b0 , without any advisory bias or speculative content.\
+}

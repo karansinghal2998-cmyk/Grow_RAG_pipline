@@ -1,0 +1,51 @@
+name: Daily Data Ingestion & Corpus Sync
+
+on:
+  schedule:
+    # Trigger every day at 10:30 AM IST (05:00 UTC)
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+    # Allows manual trigger from GitHub Actions UI
+
+jobs:
+  ingest-and-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Project Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Execute Daily Ingestion & Metric Extraction Pipeline
+        run: |
+          python export_extracted_data.py
+
+      - name: Verify BGE Vector Embeddings & ChromaDB Health
+        run: |
+          python verify_embeddings.py
+
+      - name: Execute Automated Test Suite
+        run: |
+          python -m pytest -v
+
+      - name: Commit & Push Updated Data Artifacts
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/processed/ data/vector_db/
+          if git diff --staged --quiet; then
+            echo "No corpus metric changes detected. Skipping git commit."
+          else
+            git commit -m "chore(data): automated daily Groww corpus sync [skip ci]"
+            git push
+          fi
