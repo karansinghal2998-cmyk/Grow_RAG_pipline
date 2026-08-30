@@ -90,14 +90,14 @@
     "chunk_type": "statement_download",
     "dimension": 384,
     "l2_norm": 1.0,
-    "min": -0.316892,
+    "min": -0.316891,
     "max": 0.359336,
     "mean": 0.000377,
     "std": 0.05103,
     "first_5_dimensions": [
       0.010457,
       -0.060737,
-      -0.022283,
+      -0.022282,
       0.06301,
       -0.001486
     ],
@@ -202,7 +202,7 @@
     "first_5_dimensions": [
       0.005799,
       -0.060845,
-      -0.027421,
+      -0.02742,
       0.021774,
       0.005121
     ],
@@ -308,7 +308,7 @@
       0.016007,
       -0.051519,
       -0.020184,
-      0.010638,
+      0.010639,
       0.010801
     ],
     "source_url": "https://groww.in/mutual-funds/hdfc-small-cap-fund-direct-growth",
@@ -348,10 +348,10 @@
     "std": 0.05103,
     "first_5_dimensions": [
       0.028573,
-      -0.057997,
+      -0.057998,
       -0.052911,
       -0.02471,
-      0.056276
+      0.056275
     ],
     "source_url": "https://groww.in/mutual-funds/hdfc-silver-etf-fof-direct-growth",
     "text_snippet": "HDFC Silver ETF FoF Direct Growth Expense Ratio: The expense ratio for HDFC Silver ETF FoF Direct Growth is 0.22%. Expen..."
@@ -413,7 +413,7 @@
       0.017771,
       -0.057568,
       -0.03345,
-      0.01929,
+      0.019291,
       0.021776
     ],
     "source_url": "https://groww.in/mutual-funds/hdfc-silver-etf-fof-direct-growth",
@@ -489,7 +489,7 @@
     "chunk_type": "sip_and_nav",
     "dimension": 384,
     "l2_norm": 1.0,
-    "min": -0.292999,
+    "min": -0.293,
     "max": 0.349454,
     "mean": 0.000272,
     "std": 0.05103,
