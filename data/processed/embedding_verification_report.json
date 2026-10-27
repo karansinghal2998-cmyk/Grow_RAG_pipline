@@ -56,7 +56,7 @@
       -0.015806,
       -0.088191,
       -0.018158,
-      0.034373,
+      0.034372,
       -0.004627
     ],
     "source_url": "https://groww.in/mutual-funds/hdfc-gold-etf-fund-of-fund-direct-plan-growth",
@@ -307,7 +307,7 @@
     "first_5_dimensions": [
       0.016007,
       -0.051519,
-      -0.020184,
+      -0.020185,
       0.010639,
       0.010801
     ],
@@ -348,10 +348,10 @@
     "std": 0.05103,
     "first_5_dimensions": [
       0.028573,
-      -0.057998,
+      -0.057997,
       -0.052911,
       -0.02471,
-      0.056275
+      0.056276
     ],
     "source_url": "https://groww.in/mutual-funds/hdfc-silver-etf-fof-direct-growth",
     "text_snippet": "HDFC Silver ETF FoF Direct Growth Expense Ratio: The expense ratio for HDFC Silver ETF FoF Direct Growth is 0.22%. Expen..."
