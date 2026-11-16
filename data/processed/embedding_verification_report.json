@@ -56,7 +56,7 @@
       -0.015806,
       -0.088191,
       -0.018158,
-      0.034373,
+      0.034372,
       -0.004627
     ],
     "source_url": "https://groww.in/mutual-funds/hdfc-gold-etf-fund-of-fund-direct-plan-growth",
@@ -132,7 +132,7 @@
     "chunk_type": "expense_ratio",
     "dimension": 384,
     "l2_norm": 1.0,
-    "min": -0.268155,
+    "min": -0.268156,
     "max": 0.346006,
     "mean": 0.000258,
     "std": 0.05103,
@@ -203,8 +203,8 @@
       0.005799,
       -0.060845,
       -0.02742,
-      0.021774,
-      0.005121
+      0.021773,
+      0.00512
     ],
     "source_url": "https://groww.in/mutual-funds/hdfc-large-cap-fund-direct-growth",
     "text_snippet": "How to download Account Statement & Capital Gains Report on Groww for HDFC Large Cap Fund Direct Growth: 1. Log in to yo..."
@@ -259,7 +259,7 @@
     "dimension": 384,
     "l2_norm": 1.0,
     "min": -0.293214,
-    "max": 0.355228,
+    "max": 0.355227,
     "mean": 0.000299,
     "std": 0.05103,
     "first_5_dimensions": [
@@ -329,7 +329,7 @@
       0.027235,
       -0.073245,
       -0.049469,
-      -0.016144,
+      -0.016143,
       -0.001622
     ],
     "source_url": "https://groww.in/mutual-funds/hdfc-silver-etf-fof-direct-growth",
@@ -348,7 +348,7 @@
     "std": 0.05103,
     "first_5_dimensions": [
       0.028573,
-      -0.057998,
+      -0.057997,
       -0.052911,
       -0.02471,
       0.056275
@@ -413,7 +413,7 @@
       0.017771,
       -0.057568,
       -0.03345,
-      0.019291,
+      0.01929,
       0.021776
     ],
     "source_url": "https://groww.in/mutual-funds/hdfc-silver-etf-fof-direct-growth",
